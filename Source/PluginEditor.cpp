@@ -1054,8 +1054,8 @@ SimpleGainAudioProcessorEditor::SimpleGainAudioProcessorEditor(SimpleGainAudioPr
 
     themeLabel.setText("Theme", juce::dontSendNotification);
     themeBox.addItemList(getThemeNames(), 1);
-    themeBox.setSelectedId(3, juce::dontSendNotification);  // UAD default
-    currentThemeIndex = 2;  // 0-based index (UAD)
+    themeBox.setSelectedId(5, juce::dontSendNotification);  // SleekBlack default (darkest)
+    currentThemeIndex = 4;  // 0-based index (SleekBlack)
     themeBox.onChange = [this] { 
         currentThemeIndex = themeBox.getSelectedId() - 1; 
         applyTheme(); 

@@ -27,6 +27,9 @@ juce_add_plugin(AR3S
 target_sources(AR3S PRIVATE
     Source/PluginProcessor.cpp
     Source/PluginEditor.cpp
+    Source/ThemeData.h
+    Source/Localization.h
+    Source/SharedMemory.h
 )
 
 target_compile_definitions(AR3S PRIVATE
@@ -66,6 +69,8 @@ juce_add_plugin(AR3SSatellite
 target_sources(AR3SSatellite PRIVATE
     Source/SatelliteProcessor.cpp
     Source/SatelliteEditor.cpp
+    Source/ThemeData.h
+    Source/SharedMemory.h
 )
 
 target_compile_definitions(AR3SSatellite PRIVATE

@@ -433,28 +433,38 @@ void SatelliteEditor::paint(juce::Graphics& g)
     }
     
     // === GAIN KNOB AREA ===
+    // Label above knob
+    g.setFont(juce::FontOptions(11.0f).withStyle("Bold"));
+    g.setColour(theme.textBright);
+    g.drawText("GAIN", 10, 28, 90, 14, juce::Justification::centred);
+    
     float sliderPos = static_cast<float>((gainKnob.getValue() - gainKnob.getMinimum()) / 
                                           (gainKnob.getMaximum() - gainKnob.getMinimum()));
-    drawGainKnob(g, juce::Rectangle<float>(10, 28, 90, 90), sliderPos);
+    drawGainKnob(g, juce::Rectangle<float>(10, 42, 90, 80), sliderPos);
     
     // Gain value display
     float gainDbVal = static_cast<float>(gainKnob.getValue());
     g.setFont(juce::FontOptions(14.0f).withStyle("Bold"));
     g.setColour(theme.textBright);
     juce::String gainStr = (gainDbVal >= 0 ? "+" : "") + juce::String(gainDbVal, 1) + " dB";
-    g.drawText(gainStr, 10, 118, 90, 18, juce::Justification::centred);
+    g.drawText(gainStr, 10, 122, 90, 18, juce::Justification::centred);
     
     // === CEILING KNOB AREA ===
+    // Label above knob
+    g.setFont(juce::FontOptions(11.0f).withStyle("Bold"));
+    g.setColour(theme.textBright);
+    g.drawText("CEILING", 105, 28, 90, 14, juce::Justification::centred);
+    
     float ceilingSliderPos = static_cast<float>((ceilingKnob.getValue() - ceilingKnob.getMinimum()) / 
                                                  (ceilingKnob.getMaximum() - ceilingKnob.getMinimum()));
-    drawGainKnob(g, juce::Rectangle<float>(105, 28, 90, 90), ceilingSliderPos);
+    drawGainKnob(g, juce::Rectangle<float>(105, 42, 90, 80), ceilingSliderPos);
     
     // Ceiling value display
     float ceilingDbVal = static_cast<float>(ceilingKnob.getValue());
     g.setFont(juce::FontOptions(14.0f).withStyle("Bold"));
     g.setColour(theme.textBright);
     juce::String ceilingStr = juce::String(ceilingDbVal, 1) + " dB";
-    g.drawText(ceilingStr, 105, 118, 90, 18, juce::Justification::centred);
+    g.drawText(ceilingStr, 105, 122, 90, 18, juce::Justification::centred);
     
     // === METERS ===
     const float meterX = 460;  // Moved further right to avoid controls
@@ -469,22 +479,22 @@ void SatelliteEditor::paint(juce::Graphics& g)
 void SatelliteEditor::resized()
 {
     // Channel name - moved further right to avoid ceiling knob
-    channelNameEditor.setBounds(200, 28, 140, 22);
+    channelNameEditor.setBounds(200, 42, 140, 22);
     
     // Source dropdown - moved further right
-    sourceBox.setBounds(342, 28, 110, 22);
+    sourceBox.setBounds(342, 42, 110, 22);
     
-    // Gain knob - left side
-    gainKnob.setBounds(10, 28, 90, 90);
+    // Gain knob - left side (adjusted for label)
+    gainKnob.setBounds(10, 42, 90, 80);
     
     // Ceiling knob - right next to gain knob
-    ceilingKnob.setBounds(105, 28, 90, 90);
+    ceilingKnob.setBounds(105, 42, 90, 80);
     
     // Pre/Post toggle - moved further right
-    meterModeButton.setBounds(560, 28, 50, 22);
+    meterModeButton.setBounds(560, 42, 50, 22);
     
     // Control mode toggle (LOCAL/SYNC) - moved further right
-    controlModeButton.setBounds(615, 28, 60, 22);
+    controlModeButton.setBounds(615, 42, 60, 22);
 }
 
 void SatelliteEditor::timerCallback()
